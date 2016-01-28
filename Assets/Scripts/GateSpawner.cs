@@ -52,7 +52,7 @@ public class GateSpawner : MonoBehaviour {
 		bound.ClampHeight (transform);
 
 		Gate gate = gates.Count > maxGateNums ? gates.Dequeue () : Instantiate (gatePrefab);
-		gate.SetPosition (transform);
+		gate.Initilize (transform.position);
 		gates.Enqueue (gate);
 
 		yield return null;

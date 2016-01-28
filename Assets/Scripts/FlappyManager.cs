@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Custom;
 
 public class FlappyManager : MonoBehaviour {
@@ -9,7 +11,7 @@ public class FlappyManager : MonoBehaviour {
 
 	[Header("Objects")]
 	public FlappyChan flappyChan;
-	public GateSpawner spawner;
+	public List<GateSpawner> spawners;
 
 	public enum State {
 		Introduction,
@@ -21,7 +23,7 @@ public class FlappyManager : MonoBehaviour {
 	void Start() {
 		Initilize ();
 
-		spawner.StartInstantiate ();
+		spawners.ForEach(s => s.StartInstantiate ());
 	}
 
 	private void Initilize() {
