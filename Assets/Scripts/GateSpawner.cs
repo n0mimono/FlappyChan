@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Custom;
 
 public class GateSpawner : MonoBehaviour {
 	public Gate gatePrefab;
