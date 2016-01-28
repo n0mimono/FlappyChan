@@ -8,6 +8,7 @@ public class FlappyManager : MonoBehaviour {
 	[Header("Managers")]
 	public InputManager inputManager;
 	public ScoreManager scoreManager;
+	public FadeManager  fadeManager;
 
 	[Header("Objects")]
 	public FlappyChan flappyChan;
@@ -23,7 +24,7 @@ public class FlappyManager : MonoBehaviour {
 	void Start() {
 		Initilize ();
 
-		spawners.ForEach(s => s.StartInstantiate ());
+		ProcState ().StartBy (this);
 	}
 
 	private void Initilize() {
@@ -44,12 +45,19 @@ public class FlappyManager : MonoBehaviour {
 	}
 
 	private IEnumerator StateIntroduction() {
+		spawners.ForEach(s => s.StartInstantiate ());
+		yield return fadeManager.FadeOut ();
+
 		yield return null;
+		cur = State.InGame;
 	}
 	private IEnumerator StateInGame() {
-		yield return null;
+		while (true) {
+			yield return null;
+		}
 	}
 	private IEnumerator StateGameOver() {
+		//yield return fadeManager.FadeIn ();
 		yield return null;
 	}
 
