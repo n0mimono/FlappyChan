@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Custom;
+using UnityEngine.SceneManagement;
 
 public class FlappyManager : MonoBehaviour {
 	[Header("Managers")]
@@ -57,8 +58,11 @@ public class FlappyManager : MonoBehaviour {
 		}
 	}
 	private IEnumerator StateGameOver() {
-		//yield return fadeManager.FadeIn ();
+		yield return fadeManager.FadeIn ();
 		yield return null;
+
+		Scene scene = SceneManager.GetActiveScene ();
+		SceneManager.LoadScene (scene.name);
 	}
 
 	private void OnGameOver() {
