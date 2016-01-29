@@ -19,7 +19,7 @@ public class FadeManager : MonoBehaviour {
 		return new  WaitWhile (() => {
 			t += Time.deltaTime;
 			image.color = new Color(1f, 1f, 1f, t);
-			return t >= 0f;
+			return t <= 1f;
 		});
 	}
 

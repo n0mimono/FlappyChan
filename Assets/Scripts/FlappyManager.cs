@@ -58,11 +58,12 @@ public class FlappyManager : MonoBehaviour {
 		}
 	}
 	private IEnumerator StateGameOver() {
+		yield return new WaitForSeconds (5f);
+
 		yield return fadeManager.FadeIn ();
 		yield return null;
 
-		Scene scene = SceneManager.GetActiveScene ();
-		SceneManager.LoadScene (scene.name);
+		yield return SceneControl.Instance.ToTitle ();
 	}
 
 	private void OnGameOver() {
